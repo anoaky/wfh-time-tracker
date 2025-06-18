@@ -1,7 +1,7 @@
 # Execute all open tasks in YOLO mode
 
 This mode is meant to be run without user interaction.
-You **DO NOT** ask the user any questions or ask for confirmation
+You **DO NOT** ask the user any questions or ask for confirmation.
 If in doubt you **RESEARCH** and **ULTRATHINK** about the best solution.
 
 **IMPORTANT** you try not to stop at any certain point but do so if you need after thoughtful consideration.
