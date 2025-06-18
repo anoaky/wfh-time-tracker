@@ -1,4 +1,4 @@
-import { Component, input, model, signal } from '@angular/core';
+import { Component, input, model, signal, output } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { interval, Subscription } from 'rxjs';
 
@@ -11,8 +11,8 @@ import { interval, Subscription } from 'rxjs';
 export class ProjectItemComponent {
     projectName = input.required<string>();
     elapsedTime = model(0); // in seconds
-    hourlyRate = input<number>(0);
     isRunning = signal(false);
+    deleteProject = output<void>();
     private subscription: Subscription | null = null;
 
     startTimer() {
@@ -25,6 +25,22 @@ export class ProjectItemComponent {
         this.isRunning.set(false);
     }
 
+    resetTimer() {
+        this.stopTimer();
+        this.elapsedTime.set(0);
+    }
+
+    timerStyle(): string {
+        const common = "text-2xl font-mono font-bold text-slate-700 bg-slate-50 dark:bg-slate-900 px-3 py-1 rounded-lg border";
+        if (this.isRunning()) {
+            return `project-time-running ${common}`;
+        } else if (this.elapsedTime() == 0) {
+            return `project-time ${common}`;
+        } else {
+            return `project-time-stopped ${common}`;
+        }
+    }
+
     formatElapsedTime(): string {
         let t = this.elapsedTime();
         const hours = Math.trunc(t / 3600);
@@ -32,5 +48,9 @@ export class ProjectItemComponent {
         const minutes = Math.trunc(t / 60);
         t = t % 60;
         return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${t.toString().padStart(2, '0')}`;
+    }
+
+    onDeleteClick() {
+        this.deleteProject.emit();
     }
 }
