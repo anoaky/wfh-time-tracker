@@ -1,5 +1,7 @@
 # WfhTimeTracker
 
+[![CI](https://github.com/anoaky/wfh-time-tracker/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/anoaky/wfh-time-tracker/actions/workflows/ci.yml) [![CD](https://github.com/anoaky/wfh-time-tracker/actions/workflows/firebase-hosting-merge.yml/badge.svg)](https://github.com/anoaky/wfh-time-tracker/actions/workflows/firebase-hosting-merge.yml)
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
 
 ## Development server
