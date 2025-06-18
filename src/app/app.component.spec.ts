@@ -120,8 +120,8 @@ describe('AppComponent', () => {
         const emptyStateContainer = emptyStateHeading?.parentElement;
 
         expect(emptyStateHeading).toBeTruthy();
-        expect(emptyStateHeading?.textContent).toContain('Ready to track your time?');
-        expect(emptyStateContainer?.textContent).toContain('Create your first project above and start monitoring your productivity today!');
+        expect(emptyStateHeading?.textContent).toContain('Ready to level up your time tracking?');
+        expect(emptyStateContainer?.textContent).toContain('Add your first project above and get started today!');
     });
 
     it('should display project list when projects exist', () => {
