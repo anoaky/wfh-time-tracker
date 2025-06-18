@@ -1,10 +1,10 @@
 ---
 project_name: WFH Time Tracker
 current_milestone_id: M01
-highest_sprint_in_milestone: None
-current_sprint_id: Not Started
+highest_sprint_in_milestone: S03
+current_sprint_id: S01_M01_Data_Export
 status: active
-last_updated: 2025-06-18 10:45
+last_updated: 2025-06-18 11:00
 ---
 
 # Project Manifest: WFH Time Tracker
@@ -20,15 +20,31 @@ This project follows a milestone-based development approach.
 ## 2. Current Focus
 
 - **Milestone:** M01 - Polish & Enhancement
-- **Sprint:** Not Started - Planning Phase
+- **Sprint:** S01_M01_Data_Export - Planned (Ready to Start)
 
 ## 3. Sprints in Current Milestone
 
-No sprints have been created yet for the current milestone. The milestone focuses on:
-- Data export functionality (CSV, JSON)
-- Project list reorganization (sorting, filtering)
-- Animation improvements
-- Testing expansion (>85% coverage)
+### M01 Sprint Roadmap (3 Sprints Planned)
+
+**S01_M01_Data_Export** - 📋 PLANNED (Ready to Start)
+- Focus: Complete data export functionality
+- Key Deliverables: ExportService, ExportButtonComponent, CSV/JSON generation, file download handling
+- Dependencies: None - fully specified and independent
+- Estimated Duration: ~1 week
+
+**S02_M01_Project_Organization** - 📋 PLANNED 
+- Focus: Project list sorting and organization features
+- Key Deliverables: Sort controls, sorting algorithms, visual indicators, preference persistence
+- Dependencies: SPECS_PROJECT_ORGANIZATION.md must be created first
+- Estimated Duration: ~1 week
+
+**S03_M01_Animation_Polish** - 📋 PLANNED
+- Focus: Enhanced animations and interaction polish
+- Key Deliverables: Timer animations, list animations, interaction feedback, performance optimization
+- Dependencies: SPECS_ANIMATIONS.md must be created, core functionality should be stable
+- Estimated Duration: ~1 week
+
+**Total Estimated Completion Time:** 3-4 weeks (3 weeks implementation + specification creation)
 
 ## 4. Key Documentation
 
@@ -38,6 +54,7 @@ No sprints have been created yet for the current milestone. The milestone focuse
 
 ## 5. Quick Links
 
-- **Current Sprint:** No active sprint
-- **Active Tasks:** No tasks created yet
+- **Current Sprint:** [S01_M01_Data_Export](./03_SPRINTS/S01_M01_Data_Export/) - Ready to Start
+- **Next Sprint to Detail:** S01_M01_Data_Export (Data Export Implementation)
+- **Sprint Planning:** Complete - 3 sprints planned for M01 milestone
 - **Project Reviews:** [Latest Review](./10_STATE_OF_PROJECT/)
