@@ -1,25 +1,52 @@
-<div class="bg-slate-100 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 p-6 mb-8">
-    <div class="flex flex-col gap-2">
-        <div class="flex flex-col sm:flex-row gap-3">
+<div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 p-8 mb-8 transition-all duration-300 hover:shadow-xl">
+    <div class="flex flex-col gap-4">
+        <div class="flex flex-col sm:flex-row gap-4">
             <input
-                class="flex-1 px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors text-slate-700 dark:text-slate-300 placeholder-slate-400 dark:placeholder-slate-200"
+                class="flex-1 px-5 py-3.5 border-2 rounded-xl bg-slate-50 dark:bg-slate-900 hover:bg-white dark:hover:bg-slate-800 focus:bg-white dark:focus:bg-slate-800 focus:ring-4 focus:border-blue-500 outline-none transition-all duration-200 text-slate-800 dark:text-slate-200 placeholder-slate-500 dark:placeholder-slate-400 font-medium"
                 [class.border-red-500]="isDuplicateName() && newProjectName.value"
-                [class.border-slate-300]="!isDuplicateName() || !newProjectName.value"
-                type="text" placeholder="Enter project name..." [formControl]="newProjectName" (keypress)="onKey($event)" />
+                [class.text-red-600]="isDuplicateName() && newProjectName.value"
+                [class.dark:text-red-400]="isDuplicateName() && newProjectName.value"
+                [class.ring-4]="isDuplicateName() && newProjectName.value"
+                [class.border-slate-200]="!isDuplicateName() || !newProjectName.value"
+                [class.dark:border-slate-700]="!isDuplicateName() || !newProjectName.value"
+                type="text" 
+                placeholder="Enter project name..." 
+                [formControl]="newProjectName" 
+                (keypress)="onKey($event)" />
             <button
-                class="px-6 py-3 font-medium rounded-lg transition-colors duration-200 shadow-sm"
-                [class.bg-blue-600]="isValidInput()"
-                [class.hover:bg-blue-700]="isValidInput()"
-                [class.bg-slate-400]="!isValidInput()"
+                class="px-6 py-3.5 font-semibold rounded-xl transition-all duration-300 shadow-md focus:ring-4 focus:ring-offset-2 transform hover:scale-105 active:scale-95"
+                [class.bg-gradient-to-r]="isValidInput()"
+                [class.from-blue-600]="isValidInput()"
+                [class.to-purple-600]="isValidInput()"
+                [class.hover:from-blue-700]="isValidInput()"
+                [class.hover:to-purple-700]="isValidInput()"
+                [class.bg-slate-200]="!isValidInput()"
+                [class.dark:bg-slate-700]="!isValidInput()"
                 [class.cursor-not-allowed]="!isValidInput()"
-                [class.text-white]="true"
-                [class.hover:shadow-md]="isValidInput()"
+                [class.text-white]="isValidInput()"
+                [class.text-slate-500]="!isValidInput()"
+                [class.dark:text-slate-400]="!isValidInput()"
+                [class.hover:shadow-lg]="isValidInput()"
+                [class.hover:scale-100]="!isValidInput()"
                 [disabled]="!isValidInput()"
-                (click)="onClick()">Add
-                project</button>
+                aria-label="Add new project"
+                (click)="onClick()"
+                [class.group]="isValidInput()">
+                <span class="inline-flex items-center gap-2">
+                    <svg class="w-5 h-5 transition-transform duration-300 group-hover:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                    Add Project
+                </span>
+            </button>
         </div>
         @if (isDuplicateName() && newProjectName.value) {
-        <p class="text-sm text-red-600 dark:text-red-400 ml-1">A project with this name already exists</p>
+        <p class="text-sm text-red-600 dark:text-red-400 ml-1 flex items-center gap-2 animate-pulse">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+            </svg>
+            A project with this name already exists
+        </p>
         }
     </div>
 </div>

@@ -5,8 +5,7 @@ import { interval, Subscription } from 'rxjs';
 @Component({
     selector: 'project-item',
     imports: [ReactiveFormsModule],
-    templateUrl: './project-item.component.html',
-    styleUrl: './project-item.component.css'
+    templateUrl: './project-item.component.html'
 })
 export class ProjectItemComponent {
     projectName = input.required<string>();
@@ -31,13 +30,13 @@ export class ProjectItemComponent {
     }
 
     timerStyle(): string {
-        const common = "text-2xl font-mono font-bold text-slate-700 bg-slate-50 dark:bg-slate-900 px-3 py-1 rounded-lg border";
+        const common = "text-3xl font-mono font-bold px-6 py-3 rounded-xl border-2 transition-all duration-300 shadow-sm";
         if (this.isRunning()) {
-            return `project-time-running ${common}`;
+            return `${common} text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/30 border-green-300 dark:border-green-600 animate-pulse-gentle shadow-green-200/50 dark:shadow-green-900/30`;
         } else if (this.elapsedTime() == 0) {
-            return `project-time ${common}`;
+            return `${common} text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/30 border-slate-300 dark:border-slate-600`;
         } else {
-            return `project-time-stopped ${common}`;
+            return `${common} text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/30 border-orange-300 dark:border-orange-600`;
         }
     }
 

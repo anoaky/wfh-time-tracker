@@ -3,8 +3,7 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 @Component({
     selector: 'app-add-project-form',
     imports: [ReactiveFormsModule],
-    templateUrl: './add-project-form.component.html',
-    styleUrl: './add-project-form.component.css'
+    templateUrl: './add-project-form.component.html'
 })
 export class AddProjectFormComponent {
     existingProjectNames = input<string[]>([]);
