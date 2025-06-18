@@ -1,10 +1,11 @@
 ---
 project_name: WFH Time Tracker
 current_milestone_id: M01
-highest_sprint_in_milestone: S00
-current_sprint_id: S00
+highest_milestone: M01
+highest_sprint_in_milestone: S03
+current_sprint_id: S01
 status: active
-last_updated: 2025-06-18 11:15
+last_updated: 2025-06-18 11:30
 ---
 
 # Project Manifest: WFH Time Tracker
@@ -20,11 +21,13 @@ This project follows a milestone-based development approach.
 ## 2. Current Focus
 
 - **Milestone:** M01 - Angular V20 Migration
-- **Sprint:** S00 - Not Started
+- **Sprint:** S01 - Migration Preparation
 
 ## 3. Sprints in Current Milestone
 
-No sprints have been created yet for the current milestone.
+- **S01_M01_Migration_Prep**: 📋 PLANNED - Research and preparation phase
+- **S02_M01_Core_Migration**: 📋 PLANNED - Core framework and dependency updates  
+- **S03_M01_Testing_Deployment**: 📋 PLANNED - Testing, optimization and deployment
 
 ## 4. Key Documentation
 
@@ -34,6 +37,6 @@ No sprints have been created yet for the current milestone.
 
 ## 5. Quick Links
 
-- **Current Sprint:** No active sprint
+- **Current Sprint:** [S01 - Migration Prep](./03_SPRINTS/S01_M01_Migration_Prep/)
 - **Active Tasks:** No active tasks
 - **Project Reviews:** [Latest Review](./10_STATE_OF_PROJECT/)
