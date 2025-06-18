@@ -3,16 +3,21 @@ import { RouterOutlet } from '@angular/router';
 import { AddProjectFormComponent } from './add-project-form/add-project-form.component';
 import { ProjectData } from './project-data';
 import { ProjectItemComponent } from './project-item/project-item.component';
+import { ExportButtonComponent } from './export-button/export-button.component';
 
 @Component({
     selector: 'app-root',
-    imports: [RouterOutlet, AddProjectFormComponent, ProjectItemComponent],
+    imports: [RouterOutlet, AddProjectFormComponent, ProjectItemComponent, ExportButtonComponent],
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
 })
 export class AppComponent {
     projectList: WritableSignal<ProjectData[]>;
     projectNames = computed(() => this.projectList().map(p => p.name));
+    projectsForExport = computed(() => this.projectList().map(p => ({ 
+        name: p.name, 
+        elapsedTime: p.elapsedTime() 
+    })));
 
     constructor() {
         const projectJson = localStorage.getItem('wfhProjects');

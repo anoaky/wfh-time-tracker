@@ -7,9 +7,8 @@ export class ExportService {
 
   constructor() { }
 
-  exportToCSV(): void {
+  exportToCSV(projects: { name: string, elapsedTime: number }[]): void {
     try {
-      const projects = this.getProjectsFromStorage();
       const csvData = this.generateCSV(projects);
       this.downloadFile(csvData, 'wfh-time-tracker-export.csv', 'text/csv');
     } catch (error) {
@@ -18,9 +17,8 @@ export class ExportService {
     }
   }
 
-  exportToJSON(): void {
+  exportToJSON(projects: { name: string, elapsedTime: number }[]): void {
     try {
-      const projects = this.getProjectsFromStorage();
       const jsonData = this.generateJSON(projects);
       this.downloadFile(jsonData, 'wfh-time-tracker-export.json', 'application/json');
     } catch (error) {
