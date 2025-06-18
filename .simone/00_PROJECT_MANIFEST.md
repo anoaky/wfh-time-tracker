@@ -1,7 +1,7 @@
 ---
 project_name: WFH Time Tracker
-current_milestone_id: M001
-highest_sprint_in_milestone: S00
+current_milestone_id: M01
+highest_sprint_in_milestone: None
 current_sprint_id: Not Started
 status: active
 last_updated: 2025-06-18 10:45
@@ -19,7 +19,7 @@ This project follows a milestone-based development approach.
 
 ## 2. Current Focus
 
-- **Milestone:** M001 - Polish & Enhancement
+- **Milestone:** M01 - Polish & Enhancement
 - **Sprint:** Not Started - Planning Phase
 
 ## 3. Sprints in Current Milestone
@@ -33,7 +33,7 @@ No sprints have been created yet for the current milestone. The milestone focuse
 ## 4. Key Documentation
 
 - [Architecture Documentation](./01_PROJECT_DOCS/ARCHITECTURE.md)
-- [Current Milestone Requirements](./02_REQUIREMENTS/M001_POLISH_ENHANCEMENT/)
+- [Current Milestone Requirements](./02_REQUIREMENTS/M01_POLISH_ENHANCEMENT/)
 - [General Tasks](./04_GENERAL_TASKS/)
 
 ## 5. Quick Links
