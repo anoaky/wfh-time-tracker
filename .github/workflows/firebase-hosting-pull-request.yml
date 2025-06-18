@@ -19,3 +19,5 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_WFH_TIME_TRACKER }}
           projectId: wfh-time-tracker
+        env:
+          FIREBASE_CLI_EXPERIMENTS: webframeworks
