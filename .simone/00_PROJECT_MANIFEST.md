@@ -5,7 +5,7 @@ highest_milestone: M01
 highest_sprint_in_milestone: S03
 current_sprint_id: S01
 status: active
-last_updated: 2025-06-18 13:39
+last_updated: 2025-06-18 14:24
 ---
 
 # Project Manifest: WFH Time Tracker
@@ -38,5 +38,5 @@ This project follows a milestone-based development approach.
 ## 5. Quick Links
 
 - **Current Sprint:** [S01 - Migration Prep](./03_SPRINTS/S01_M01_Migration_Prep/)
-- **Active Tasks:** T03_S01_Setup_Migration_Branch (in_progress)
+- **Active Tasks:** No active tasks
 - **Project Reviews:** [Latest Review](./10_STATE_OF_PROJECT/)
