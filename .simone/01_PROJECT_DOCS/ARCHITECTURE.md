@@ -218,7 +218,7 @@ npm run watch      # Build with file watching
 
 ## Architecture Strengths
 
-1. **Modern Angular Patterns**: Showcases latest Angular 19 features
+1. **Modern Angular Patterns**: Showcases latest Angular 20 features
 2. **Simple Yet Scalable**: Easy to understand, room to grow
 3. **Privacy-Focused**: No backend, complete user control
 4. **Learning-Friendly**: Clear structure for Angular education
