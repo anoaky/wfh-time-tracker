@@ -1,10 +1,11 @@
 import { Component, input, model, signal, output } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CdkDrag } from '@angular/cdk/drag-drop';
 import { interval, Subscription } from 'rxjs';
 
 @Component({
     selector: 'project-item',
-    imports: [ReactiveFormsModule],
+    imports: [ReactiveFormsModule, CdkDrag],
     templateUrl: './project-item.component.html'
 })
 export class ProjectItemComponent {

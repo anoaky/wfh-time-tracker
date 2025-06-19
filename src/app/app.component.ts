@@ -1,12 +1,13 @@
 import { Component, signal, effect, WritableSignal, computed } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { CdkDropList } from '@angular/cdk/drag-drop';
 import { AddProjectFormComponent } from './add-project-form/add-project-form.component';
 import { ProjectData } from './project-data';
 import { ProjectItemComponent } from './project-item/project-item.component';
 
 @Component({
     selector: 'app-root',
-    imports: [RouterOutlet, AddProjectFormComponent, ProjectItemComponent],
+    imports: [RouterOutlet, CdkDropList, AddProjectFormComponent, ProjectItemComponent],
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
 })

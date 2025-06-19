@@ -3,7 +3,7 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
-This is an Angular 19 work-from-home time tracker application that allows users to create projects and track time spent on them. The app uses Angular's new signals-based architecture with local storage for data persistence.
+This is an Angular 20 work-from-home time tracker application that allows users to create projects and track time spent on them. The app uses Angular's new signals-based architecture with local storage for data persistence and Angular CDK for drag-and-drop functionality.
 
 ## Core Architecture
 - **AppComponent**: Main component managing the project list with localStorage autosave using Angular effects
@@ -11,6 +11,7 @@ This is an Angular 19 work-from-home time tracker application that allows users 
 - **ProjectItemComponent**: Individual project timer display and controls
 - **AddProjectFormComponent**: Form for creating new projects
 - Uses Angular signals throughout for reactive state management
+- Angular CDK for drag-and-drop functionality
 - Tailwind CSS for styling
 
 ## Development Commands
@@ -28,3 +29,8 @@ This is an Angular 19 work-from-home time tracker application that allows users 
 ## Testing
 - Uses Jasmine and Karma for unit testing
 - Test files follow `.spec.ts` naming convention
+
+## Dependencies
+- **Angular CDK** (v20.0.3): Provides drag-and-drop functionality
+- **Tailwind CSS** (v4.1.10): Utility-first styling framework
+- **Angular** (v20.0.4): Core framework with signals-based architecture

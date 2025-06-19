@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/anoaky/wfh-time-tracker/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/anoaky/wfh-time-tracker/actions/workflows/tests.yml) [![CD](https://github.com/anoaky/wfh-time-tracker/actions/workflows/firebase-hosting-merge.yml/badge.svg)](https://github.com/anoaky/wfh-time-tracker/actions/workflows/firebase-hosting-merge.yml)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
+A work-from-home time tracker application built with Angular 20, featuring drag-and-drop project reordering using Angular CDK and modern signals-based architecture.
 
 ## Development server
 
