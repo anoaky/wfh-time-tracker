@@ -27,7 +27,7 @@
     <div class="max-w-4xl mx-auto py-8 px-4">
 
         <app-add-project-form (addProject)="addProject($event)" [existingProjectNames]="projectNames()" />
-        <div class="space-y-6">
+        <div class="space-y-6" cdkDropList [cdkDropListData]="projectList()">
             <!--Project list-->
             @if (projectList().length == 0) {
             <div
