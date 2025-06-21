@@ -7,7 +7,7 @@ import {
 } from "@angular/core";
 import { RouterOutlet } from "@angular/router";
 import { AddProjectFormComponent } from "./add-project-form/add-project-form.component";
-import { ProjectData } from "./project-data";
+import { ProjectData } from "./common/project-data";
 import { ProjectItemComponent } from "./project-item/project-item.component";
 import {
   CdkDropList,
