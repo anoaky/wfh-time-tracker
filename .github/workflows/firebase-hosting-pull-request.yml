@@ -18,6 +18,7 @@ jobs:
     needs: [run_tests]
     steps:
       - uses: actions/checkout@v4
+      - run: npm ci
       - name: Get build
         uses: actions/download-artifact@v4
         with:
