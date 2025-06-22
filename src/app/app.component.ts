@@ -9,6 +9,7 @@ import { RouterOutlet } from "@angular/router";
 import { AddProjectFormComponent } from "./add-project-form/add-project-form.component";
 import { ProjectData } from "./common/project-data";
 import { ProjectItemComponent } from "./project-item/project-item.component";
+import { ExportButtonComponent } from "./components/export-button/export-button.component";
 import {
   CdkDropList,
   CdkDragDrop,
@@ -23,6 +24,7 @@ import {
     RouterOutlet,
     AddProjectFormComponent,
     ProjectItemComponent,
+    ExportButtonComponent,
     CdkDropList,
     CdkDrag,
     CdkDragPlaceholder,

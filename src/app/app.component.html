@@ -32,6 +32,24 @@
       (addProject)="addProject($event)"
       [existingProjectNames]="projectNames()"
     />
+    
+    <!-- Export Button Section -->
+    @if (projectList().length > 0) {
+      <div class="mt-6 flex items-center justify-between">
+        <h2 class="text-xl font-semibold text-slate-800 dark:text-slate-200">Projects</h2>
+        <div class="flex gap-2">
+          <app-export-button 
+            [projects]="projectList()" 
+            [format]="'csv'"
+          />
+          <app-export-button 
+            [projects]="projectList()" 
+            [format]="'json'"
+          />
+        </div>
+      </div>
+    }
+    
     <div class="mt-8 flex-row items-center">
       <!--Project list-->
       @if (projectList().length == 0) {
