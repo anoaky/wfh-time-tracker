@@ -3,7 +3,7 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
-This is an Angular 19 work-from-home time tracker application that allows users to create projects and track time spent on them. The app uses Angular's new signals-based architecture with local storage for data persistence.
+This is an Angular 20 work-from-home time tracker application that allows users to create projects and track time spent on them. The app uses Angular's new signals-based architecture with local storage for data persistence.
 
 ## Core Architecture
 - **AppComponent**: Main component managing the project list with localStorage autosave using Angular effects
