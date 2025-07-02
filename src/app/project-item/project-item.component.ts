@@ -12,12 +12,15 @@ export class ProjectItemComponent {
     projectName = input.required<string>();
     elapsedTime = model(0); // in seconds
     isRunning = signal(false);
+    startTime: number | null = null;
     deleteProject = output<void>();
     private subscription: Subscription | null = null;
 
     startTimer() {
+        this.startTime = Date.now();
         this.subscription = interval(1000).subscribe(() => {
-            this.elapsedTime.update(t => t + 1);
+            const currentTime = Date.now();
+            this.elapsedTime.set(Math.round(currentTime - this.startTime!));
         });
         this.isRunning.set(true);
     }
@@ -25,6 +28,7 @@ export class ProjectItemComponent {
     stopTimer() {
         this.subscription?.unsubscribe();
         this.isRunning.set(false);
+        this.startTime = null;
     }
 
     resetTimer() {
