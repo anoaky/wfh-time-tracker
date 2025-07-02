@@ -19,7 +19,7 @@ export class ProjectItemComponent {
 
     startTimer() {
         this.runningProject()?.stopTimer();
-        this.startTime = Date.now();
+        this.startTime = Date.now() - (this.elapsedTime() * 1000);
         this.subscription = interval(1000).subscribe(() => {
             const currentTime = Date.now();
             this.elapsedTime.set(Math.round((currentTime - this.startTime!) / 1000));
