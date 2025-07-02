@@ -10,6 +10,7 @@ import { interval, Subscription } from "rxjs";
 })
 export class ProjectItemComponent {
     projectName = input.required<string>();
+    runningProject = model.required<ProjectItemComponent | null>();
     elapsedTime = model(0); // in seconds
     isRunning = signal(false);
     startTime: number | null = null;
@@ -17,12 +18,14 @@ export class ProjectItemComponent {
     private subscription: Subscription | null = null;
 
     startTimer() {
+        this.runningProject()?.stopTimer();
         this.startTime = Date.now();
         this.subscription = interval(1000).subscribe(() => {
             const currentTime = Date.now();
             this.elapsedTime.set(Math.round((currentTime - this.startTime!) / 1000));
         });
         this.isRunning.set(true);
+        this.runningProject.set(this);
     }
 
     stopTimer() {
