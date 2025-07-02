@@ -13,15 +13,11 @@ export class ProjectItemComponent {
     elapsedTime = model(0); // in seconds
     isRunning = signal(false);
     deleteProject = output<void>();
-    startTime: Date | null = null;
     private subscription: Subscription | null = null;
 
-
     startTimer() {
-        this.startTime = new Date((new Date()).valueOf() - this.elapsedTime() * 1000);
         this.subscription = interval(1000).subscribe(() => {
-            const currentTime = new Date();
-            this.elapsedTime.set((currentTime.valueOf() - this.startTime!.valueOf()) / 1000);
+            this.elapsedTime.update(t => t + 1);
         });
         this.isRunning.set(true);
     }
@@ -53,7 +49,7 @@ export class ProjectItemComponent {
         const hours = Math.trunc(t / 3600);
         t = t % 3600;
         const minutes = Math.trunc(t / 60);
-        t = Math.trunc(t % 60);
+        t = t % 60;
         return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${t.toString().padStart(2, "0")}`;
     }
 
