@@ -10,25 +10,28 @@ import { interval, Subscription } from "rxjs";
 })
 export class ProjectItemComponent {
     projectName = input.required<string>();
+    runningProject = model.required<ProjectItemComponent | null>();
     elapsedTime = model(0); // in seconds
     isRunning = signal(false);
+    startTime: number | null = null;
     deleteProject = output<void>();
-    startTime: Date | null = null;
     private subscription: Subscription | null = null;
 
-
     startTimer() {
-        this.startTime = new Date((new Date()).valueOf() - this.elapsedTime() * 1000);
+        this.runningProject()?.stopTimer();
+        this.startTime = Date.now() - (this.elapsedTime() * 1000);
         this.subscription = interval(1000).subscribe(() => {
-            const currentTime = new Date();
-            this.elapsedTime.set((currentTime.valueOf() - this.startTime!.valueOf()) / 1000);
+            const currentTime = Date.now();
+            this.elapsedTime.set(Math.round((currentTime - this.startTime!) / 1000));
         });
         this.isRunning.set(true);
+        this.runningProject.set(this);
     }
 
     stopTimer() {
         this.subscription?.unsubscribe();
         this.isRunning.set(false);
+        this.startTime = null;
     }
 
     resetTimer() {
@@ -53,7 +56,7 @@ export class ProjectItemComponent {
         const hours = Math.trunc(t / 3600);
         t = t % 3600;
         const minutes = Math.trunc(t / 60);
-        t = Math.trunc(t % 60);
+        t = t % 60;
         return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${t.toString().padStart(2, "0")}`;
     }
 

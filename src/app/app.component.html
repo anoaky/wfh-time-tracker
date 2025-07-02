@@ -58,7 +58,7 @@
                 @for (project of projectList(); track project.name) {
                 <div cdkDrag>
                     <project-item [projectName]="project.name" [(elapsedTime)]="project.elapsedTime"
-                        (deleteProject)="deleteProject(project.name)" />
+                        (deleteProject)="deleteProject(project.name)" [(runningProject)]="runningProject" />
                     <ng-template cdkDragPlaceholder>
                         <div
                             class="bg-blue-100 dark:bg-blue-900/30 rounded-2xl shadow-inner border-2 border-dashed border-blue-300 dark:border-blue-700 p-8">
