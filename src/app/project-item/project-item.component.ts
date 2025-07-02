@@ -20,7 +20,7 @@ export class ProjectItemComponent {
         this.startTime = Date.now();
         this.subscription = interval(1000).subscribe(() => {
             const currentTime = Date.now();
-            this.elapsedTime.set(Math.round(currentTime - this.startTime!));
+            this.elapsedTime.set(Math.round((currentTime - this.startTime!) / 1000));
         });
         this.isRunning.set(true);
     }
