@@ -20,10 +20,10 @@ describe('ProjectData', () => {
     it('should allow updating elapsed time', () => {
         const project = new ProjectData('Test Project');
         expect(project.elapsedTime()).toBe(0);
-        
+
         project.elapsedTime.set(120);
         expect(project.elapsedTime()).toBe(120);
-        
+
         project.elapsedTime.update(t => t + 60);
         expect(project.elapsedTime()).toBe(180);
     });
@@ -31,11 +31,12 @@ describe('ProjectData', () => {
     it('should sanitize correctly for localStorage', () => {
         const project = new ProjectData('Test Project');
         project.elapsedTime.set(7200); // 2 hours
-        
+
         const sanitized = project.sanitize();
         expect(sanitized).toEqual({
             name: 'Test Project',
-            elapsedTime: 7200
+            elapsedTime: 7200,
+            hourlyRate: 0
         });
         expect(typeof sanitized.elapsedTime).toBe('number');
     });
@@ -44,7 +45,7 @@ describe('ProjectData', () => {
         const project = new ProjectData('');
         expect(project.name).toBe('');
         expect(project.elapsedTime()).toBe(0);
-        
+
         const sanitized = project.sanitize();
         expect(sanitized.name).toBe('');
     });
