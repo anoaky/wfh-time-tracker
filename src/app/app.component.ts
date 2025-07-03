@@ -39,11 +39,12 @@ export class AppComponent {
     constructor() {
         const projectJson = localStorage.getItem("wfhProjects");
         console.log(projectJson);
-        let savedObjects: { name: string; elapsedTime: number; }[] = [];
+        let savedObjects: { name: string; elapsedTime: number; hourlyRate?: number; }[] = [];
         try {
             savedObjects = JSON.parse(projectJson ?? "[]") as {
                 name: string;
                 elapsedTime: number;
+                hourlyRate?: number;
             }[];
         } catch (error) {
             console.error("Error parsing localStorage data:", error);
@@ -52,10 +53,11 @@ export class AppComponent {
         const reconstructedProjects: ProjectData[] = [];
         for (var obj of savedObjects) {
             reconstructedProjects.push(
-                new ProjectData(obj.name, signal(obj.elapsedTime)),
+                new ProjectData(obj.name, signal(obj.elapsedTime), signal(obj.hourlyRate || 0)),
             );
         }
         this.projectList = signal(reconstructedProjects);
+
 
         // autosave
         effect(() => this.saveProjects());
