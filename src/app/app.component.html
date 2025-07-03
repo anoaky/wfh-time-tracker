@@ -46,10 +46,10 @@
             } @else {
             <div cdkDropList (cdkDropListDropped)="moveProject($event)"
                 class="flex-col items-center justify-evenly relative">
-                @for (project of projectList(); track project.name) {
+                @for (project of projectList(); track project.name()) {
                 <div cdkDrag>
-                    <project-item [projectName]="project.name" [(elapsedTime)]="project.elapsedTime"
-                        [(hourlyRate)]="project.hourlyRate" (deleteProject)="deleteProject(project.name)"
+                    <project-item [(projectName)]="project.name" [(elapsedTime)]="project.elapsedTime"
+                        [(hourlyRate)]="project.hourlyRate" (deleteProject)="deleteProject(project.name())"
                         [(runningProject)]="runningProject" />
                     <ng-template cdkDragPlaceholder>
                         <div

@@ -9,7 +9,7 @@ import { interval, Subscription } from "rxjs";
     templateUrl: "./project-item.component.html",
 })
 export class ProjectItemComponent {
-    projectName = input.required<string>();
+    projectName = model.required<string>();
     runningProject = model.required<ProjectItemComponent | null>();
     elapsedTime = model(0); // in seconds
     hourlyRate = model(0); // hourly rate in currency units

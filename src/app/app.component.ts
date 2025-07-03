@@ -34,7 +34,7 @@ import {
 export class AppComponent {
     projectList: WritableSignal<ProjectData[]>;
     runningProject: WritableSignal<ProjectItemComponent | null> = signal(null);
-    projectNames = computed(() => this.projectList().map((p) => p.name));
+    projectNames = computed(() => this.projectList().map((p) => p.name()));
 
     constructor() {
         const projectJson = localStorage.getItem("wfhProjects");
@@ -53,7 +53,7 @@ export class AppComponent {
         const reconstructedProjects: ProjectData[] = [];
         for (var obj of savedObjects) {
             reconstructedProjects.push(
-                new ProjectData(obj.name, signal(obj.elapsedTime), signal(obj.hourlyRate || 0)),
+                new ProjectData(obj.name, obj.elapsedTime, obj.hourlyRate ?? 0),
             );
         }
         this.projectList = signal(reconstructedProjects);
@@ -73,7 +73,7 @@ export class AppComponent {
 
     deleteProject(projectName: string) {
         this.projectList.update((projs) =>
-            projs.filter((project) => project.name !== projectName),
+            projs.filter((project) => project.name() !== projectName),
         );
     }
 

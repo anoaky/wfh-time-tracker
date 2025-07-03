@@ -5,15 +5,15 @@ describe('ProjectData', () => {
     it('should create an instance with default elapsed time', () => {
         const project = new ProjectData('Test Project');
         expect(project).toBeTruthy();
-        expect(project.name).toBe('Test Project');
+        expect(project.name()).toBe('Test Project');
         expect(project.elapsedTime()).toBe(0);
     });
 
     it('should create an instance with custom elapsed time', () => {
-        const customTime = signal(3600); // 1 hour in seconds
+        const customTime = 3600; // 1 hour in seconds
         const project = new ProjectData('Test Project', customTime);
         expect(project).toBeTruthy();
-        expect(project.name).toBe('Test Project');
+        expect(project.name()).toBe('Test Project');
         expect(project.elapsedTime()).toBe(3600);
     });
 
@@ -36,14 +36,14 @@ describe('ProjectData', () => {
         expect(sanitized).toEqual({
             name: 'Test Project',
             elapsedTime: 7200,
-            hourlyRate: 0
+            hourlyRate: 0,
         });
         expect(typeof sanitized.elapsedTime).toBe('number');
     });
 
     it('should handle empty project name', () => {
         const project = new ProjectData('');
-        expect(project.name).toBe('');
+        expect(project.name()).toBe('');
         expect(project.elapsedTime()).toBe(0);
 
         const sanitized = project.sanitize();

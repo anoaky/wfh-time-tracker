@@ -58,8 +58,8 @@ describe("AppComponent", () => {
     it("should load projects from localStorage on initialization", () => {
         // Set up localStorage before creating component
         const savedProjects = [
-            { name: "Project 1", elapsedTime: 120, hourlyRate: 85.50 },
-            { name: "Project 2", elapsedTime: 3600, hourlyRate: 31.44 },
+            { name: "Project 1", elapsedTime: 120, hourlyRate: 0 },
+            { name: "Project 2", elapsedTime: 3600, hourlyRate: 0 },
         ];
         mockLocalStorage["wfhProjects"] = JSON.stringify(savedProjects);
 
@@ -68,9 +68,9 @@ describe("AppComponent", () => {
         const newComponent = newFixture.componentInstance;
 
         expect(newComponent.projectList().length).toBe(2);
-        expect(newComponent.projectList()[0].name).toBe("Project 1");
+        expect(newComponent.projectList()[0].name()).toBe("Project 1");
         expect(newComponent.projectList()[0].elapsedTime()).toBe(120);
-        expect(newComponent.projectList()[1].name).toBe("Project 2");
+        expect(newComponent.projectList()[1].name()).toBe("Project 2");
         expect(newComponent.projectList()[1].elapsedTime()).toBe(3600);
     });
 
@@ -91,7 +91,7 @@ describe("AppComponent", () => {
         component.addProject("New Project");
 
         expect(component.projectList().length).toBe(1);
-        expect(component.projectList()[0].name).toBe("New Project");
+        expect(component.projectList()[0].name()).toBe("New Project");
         expect(component.projectList()[0].elapsedTime()).toBe(0);
     });
 
@@ -181,7 +181,7 @@ describe("AppComponent", () => {
         const projects = ["First", "Second", "Third", "Fourth"];
         projects.forEach((name) => component.addProject(name));
 
-        expect(component.projectList().map((p) => p.name)).toEqual(projects);
+        expect(component.projectList().map((p) => p.name())).toEqual(projects);
     });
 
     it("should delete project by name", () => {
@@ -194,7 +194,7 @@ describe("AppComponent", () => {
         component.deleteProject("Project B");
 
         expect(component.projectList().length).toBe(2);
-        expect(component.projectList().map((p) => p.name)).toEqual([
+        expect(component.projectList().map((p) => p.name())).toEqual([
             "Project A",
             "Project C",
         ]);
@@ -217,7 +217,7 @@ describe("AppComponent", () => {
 
         expect(() => component.deleteProject("Non-existent Project")).not.toThrow();
         expect(component.projectList().length).toBe(1);
-        expect(component.projectList()[0].name).toBe("Existing Project");
+        expect(component.projectList()[0].name()).toBe("Existing Project");
     });
 
     it("should delete first project correctly", () => {
@@ -227,7 +227,7 @@ describe("AppComponent", () => {
 
         component.deleteProject("First");
 
-        expect(component.projectList().map((p) => p.name)).toEqual([
+        expect(component.projectList().map((p) => p.name())).toEqual([
             "Second",
             "Third",
         ]);
@@ -240,7 +240,7 @@ describe("AppComponent", () => {
 
         component.deleteProject("Third");
 
-        expect(component.projectList().map((p) => p.name)).toEqual([
+        expect(component.projectList().map((p) => p.name())).toEqual([
             "First",
             "Second",
         ]);
@@ -253,7 +253,7 @@ describe("AppComponent", () => {
 
         component.deleteProject("Second");
 
-        expect(component.projectList().map((p) => p.name)).toEqual([
+        expect(component.projectList().map((p) => p.name())).toEqual([
             "First",
             "Third",
         ]);
