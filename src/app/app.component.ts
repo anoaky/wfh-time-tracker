@@ -34,16 +34,17 @@ import {
 export class AppComponent {
     projectList: WritableSignal<ProjectData[]>;
     runningProject: WritableSignal<ProjectItemComponent | null> = signal(null);
-    projectNames = computed(() => this.projectList().map((p) => p.name));
+    projectNames = computed(() => this.projectList().map((p) => p.name()));
 
     constructor() {
         const projectJson = localStorage.getItem("wfhProjects");
         console.log(projectJson);
-        let savedObjects: { name: string; elapsedTime: number; }[] = [];
+        let savedObjects: { name: string; elapsedTime: number; hourlyRate?: number; }[] = [];
         try {
             savedObjects = JSON.parse(projectJson ?? "[]") as {
                 name: string;
                 elapsedTime: number;
+                hourlyRate?: number;
             }[];
         } catch (error) {
             console.error("Error parsing localStorage data:", error);
@@ -52,10 +53,11 @@ export class AppComponent {
         const reconstructedProjects: ProjectData[] = [];
         for (var obj of savedObjects) {
             reconstructedProjects.push(
-                new ProjectData(obj.name, signal(obj.elapsedTime)),
+                new ProjectData(obj.name, obj.elapsedTime, obj.hourlyRate ?? 0),
             );
         }
         this.projectList = signal(reconstructedProjects);
+
 
         // autosave
         effect(() => this.saveProjects());
@@ -71,7 +73,7 @@ export class AppComponent {
 
     deleteProject(projectName: string) {
         this.projectList.update((projs) =>
-            projs.filter((project) => project.name !== projectName),
+            projs.filter((project) => project.name() !== projectName),
         );
     }
 

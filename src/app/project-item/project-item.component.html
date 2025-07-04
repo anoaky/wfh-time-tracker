@@ -1,73 +1,81 @@
-<div
-  cdkDragHandle
-  class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 p-8 hover:shadow-2xl transition-all duration-300 relative group cursor-move"
->
-  <div
-    class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6"
-  >
-    <h3 class="text-2xl font-bold text-slate-800 dark:text-slate-100">
-      {{ projectName() }}
-    </h3>
-    <div class="flex flex-col sm:flex-row sm:items-center gap-6">
-      <!--Timer display-->
-      <div [class]="timerStyle()">
-        {{ formatElapsedTime() }}
-      </div>
-      <!--Control buttons-->
-      <div class="flex items-center gap-2">
-        @if (isRunning()) {
-          <button
-            (click)="stopTimer()"
-            aria-label="Stop timer"
-            class="stop-btn inline-flex items-center gap-2 px-4 py-2.5 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-xl transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 active:scale-95 focus:ring-4 focus:ring-red-500"
-          >
-            <svg class="w-4 h-4" fill="currentColor" viewBox="-2 -2 20 20">
-              <path d="M7 1H2V15H7V1Z" />
-              <path d="M14 1H9V15H14V1Z" />
-            </svg>
-          </button>
-        } @else {
-          <button
-            (click)="startTimer()"
-            aria-label="Start timer"
-            class="start-btn inline-flex items-center gap-2 px-4 py-2.5 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-xl transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 active:scale-95 focus:ring-4 focus:ring-green-500"
-          >
-            <svg class="w-4 h-4" fill="currentColor" viewBox="3 3 15 15">
-              <path d="M8 5v10l8-5-8-5z"></path>
-            </svg>
-          </button>
-        }
-        <button
-          (click)="resetTimer()"
-          aria-label="Reset timer"
-          class="reset-btn inline-flex items-center gap-2 px-3 py-2.5 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 font-medium rounded-xl transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105 active:scale-95 focus:ring-4 focus:ring-slate-500"
-        >
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 15 15">
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M4.85355 2.14645C5.04882 2.34171 5.04882 2.65829 4.85355 2.85355L3.70711 4H9C11.4853 4 13.5 6.01472 13.5 8.5C13.5 10.9853 11.4853 13 9 13H5C4.72386 13 4.5 12.7761 4.5 12.5C4.5 12.2239 4.72386 12 5 12H9C10.933 12 12.5 10.433 12.5 8.5C12.5 6.567 10.933 5 9 5H3.70711L4.85355 6.14645C5.04882 6.34171 5.04882 6.65829 4.85355 6.85355C4.65829 7.04882 4.34171 7.04882 4.14645 6.85355L2.14645 4.85355C1.95118 4.65829 1.95118 4.34171 2.14645 4.14645L4.14645 2.14645C4.34171 1.95118 4.65829 1.95118 4.85355 2.14645Z"
-            />
-          </svg>
-        </button>
-        <button
-          (click)="onDeleteClick()"
-          aria-label="Delete project"
-          class="delete-btn inline-flex items-center gap-2 px-3 py-2.5 bg-slate-200 dark:bg-slate-700 hover:bg-red-500 hover:text-white text-slate-700 dark:text-slate-200 font-medium rounded-xl transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105 active:scale-95 focus:ring-4 focus:ring-red-500 group/delete"
-        >
-          <svg
-            class="w-4 h-4 transition-transform duration-300 group-hover/delete:scale-110"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-              clip-rule="evenodd"
-            ></path>
-          </svg>
-        </button>
-      </div>
+<div cdkDragHandle
+    class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 p-8 hover:shadow-2xl transition-all duration-300 relative group cursor-move">
+    <div class="flex flex-col gap-6">
+        <!-- Project name and hourly rate -->
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <h3 class="text-2xl font-bold text-slate-800 dark:text-slate-100">
+                {{ projectName() }}
+            </h3>
+            <div class="flex items-center justify-between gap-1.5">
+                <label class="text-sm font-medium text-slate-600 dark:text-slate-400">Rate:</label>
+                <div class="relative">
+                    @if (!isEditingRate()) {
+                    <button (click)="startEditingRate()"
+                        class="px-4 py-1.5 text-sm font-semibold bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-700 dark:to-slate-600 hover:from-slate-100 hover:to-slate-200 dark:hover:from-slate-600 dark:hover:to-slate-500 text-slate-800 dark:text-slate-100 rounded-lg border border-slate-300 dark:border-slate-600 transition-all duration-200 hover:shadow-md transform hover:scale-105 active:scale-100">
+                        <span class="flex items-center gap-1">
+                            <span class="text-slate-500 dark:text-slate-400">$</span>
+                            <span>{{ formatHourlyRate() }}</span>
+                            <span class="text-xs text-slate-400 dark:text-slate-500">/hr</span>
+                        </span>
+                    </button>
+                    } @else {
+                    <input #rateInput type="number" [(ngModel)]="hourlyRate" min="0" step="0.01"
+                        (blur)="stopEditingRate()" (keydown.enter)="stopEditingRate()"
+                        class="px-3 py-1.5 w-28 text-sm font-semibold border-2 border-blue-500 dark:border-blue-400 rounded-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:border-blue-500 outline-none shadow-sm"
+                        placeholder="0.00">
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Timer and earnings display -->
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+            <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+                <!--Timer display-->
+                <div [class]="timerStyle()">
+                    {{ formatElapsedTime() }}
+                </div>
+                <!-- Earnings display -->
+                <div
+                    class="text-2xl font-bold px-4 py-2 rounded-lg bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-700 text-green-700 dark:text-green-300">
+                    ${{ formatEarnings() }}
+                </div>
+            </div>
+            <!--Control buttons-->
+            <div class="flex items-center gap-2">
+                @if (isRunning()) {
+                <button (click)="stopTimer()" aria-label="Stop timer"
+                    class="stop-btn inline-flex items-center gap-2 px-4 py-2.5 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-xl transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 active:scale-95 focus:ring-4 focus:ring-red-500">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="-2 -2 20 20">
+                        <path d="M7 1H2V15H7V1Z" />
+                        <path d="M14 1H9V15H14V1Z" />
+                    </svg>
+                </button>
+                } @else {
+                <button (click)="startTimer()" aria-label="Start timer"
+                    class="start-btn inline-flex items-center gap-2 px-4 py-2.5 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-xl transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 active:scale-95 focus:ring-4 focus:ring-green-500">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="3 3 15 15">
+                        <path d="M8 5v10l8-5-8-5z"></path>
+                    </svg>
+                </button>
+                }
+                <button (click)="resetTimer()" aria-label="Reset timer"
+                    class="reset-btn inline-flex items-center gap-2 px-3 py-2.5 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 font-medium rounded-xl transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105 active:scale-95 focus:ring-4 focus:ring-slate-500">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 15 15">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M4.85355 2.14645C5.04882 2.34171 5.04882 2.65829 4.85355 2.85355L3.70711 4H9C11.4853 4 13.5 6.01472 13.5 8.5C13.5 10.9853 11.4853 13 9 13H5C4.72386 13 4.5 12.7761 4.5 12.5C4.5 12.2239 4.72386 12 5 12H9C10.933 12 12.5 10.433 12.5 8.5C12.5 6.567 10.933 5 9 5H3.70711L4.85355 6.14645C5.04882 6.34171 5.04882 6.65829 4.85355 6.85355C4.65829 7.04882 4.34171 7.04882 4.14645 6.85355L2.14645 4.85355C1.95118 4.65829 1.95118 4.34171 2.14645 4.14645L4.14645 2.14645C4.34171 1.95118 4.65829 1.95118 4.85355 2.14645Z" />
+                    </svg>
+                </button>
+                <button (click)="onDeleteClick()" aria-label="Delete project"
+                    class="delete-btn inline-flex items-center gap-2 px-3 py-2.5 bg-slate-200 dark:bg-slate-700 hover:bg-red-500 hover:text-white text-slate-700 dark:text-slate-200 font-medium rounded-xl transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105 active:scale-95 focus:ring-4 focus:ring-red-500 group/delete">
+                    <svg class="w-4 h-4 transition-transform duration-300 group-hover/delete:scale-110"
+                        fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                            d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
