@@ -4,7 +4,6 @@ import {
     effect,
     WritableSignal,
     computed,
-    EffectCleanupRegisterFn,
 } from "@angular/core";
 import { RouterOutlet } from "@angular/router";
 import { AddProjectFormComponent } from "./add-project-form/add-project-form.component";

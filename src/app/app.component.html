@@ -18,7 +18,7 @@
     <!-- Main Content -->
     <div class="max-w-4xl mx-auto py-8 px-4">
         <app-add-project-form (addProject)="addProject($event)" [existingProjectNames]="projectNames()" />
-        <div class="mt-8 flex-row items-center">
+        <div class="mt-8 flex-col">
             <!--Project list-->
             @if (projectList().length == 0) {
             <div
@@ -45,9 +45,9 @@
             </div>
             } @else {
             <div cdkDropList (cdkDropListDropped)="moveProject($event)"
-                class="flex-col items-center justify-evenly relative">
+                class="flex-col items-center justify-between gap-2 relative">
                 @for (project of projectList(); track project.name()) {
-                <div cdkDrag>
+                <div cdkDrag class="my-2">
                     <project-item [(projectName)]="project.name" [(elapsedTime)]="project.elapsedTime"
                         [(hourlyRate)]="project.hourlyRate" (deleteProject)="deleteProject(project.name())"
                         [(runningProject)]="runningProject" />
