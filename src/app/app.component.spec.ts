@@ -1,7 +1,5 @@
 import { TestBed, ComponentFixture } from "@angular/core/testing";
 import { AppComponent } from "./app.component";
-import { signal } from "@angular/core";
-import { ProjectData } from "./common/project-data";
 import { By } from "@angular/platform-browser";
 
 describe("AppComponent", () => {

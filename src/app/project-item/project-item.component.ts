@@ -1,5 +1,5 @@
 import { CdkDragHandle } from "@angular/cdk/drag-drop";
-import { Component, input, model, signal, output, effect, computed, ViewChild, ElementRef } from "@angular/core";
+import { Component, model, signal, output, effect, computed, ViewChild, ElementRef } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { interval, Subscription } from "rxjs";
 
@@ -63,7 +63,7 @@ export class ProjectItemComponent {
         const common =
             "text-3xl font-mono font-bold px-6 py-3 rounded-xl border-2 transition-all duration-300 shadow-sm";
         if (this.isRunning()) {
-            return `${common} text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/30 border-green-300 dark:border-green-600 animate-pulse-gentle shadow-green-200/50 dark:shadow-green-900/30`;
+            return `${common} text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/30 border-green-300 dark:border-green-600 animate-pulse shadow-green-200/50 dark:shadow-green-900/30`;
         } else if (this.elapsedTime() == 0) {
             return `${common} text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/30 border-slate-300 dark:border-slate-600`;
         } else {
@@ -86,7 +86,7 @@ export class ProjectItemComponent {
 
     stopEditingRate() {
         this.isEditingRate.set(false);
-        if (this.hourlyRate() < 0) {
+        if (!(this.hourlyRate() > 0)) {
             this.hourlyRate.set(0);
         }
     }

@@ -5,7 +5,6 @@ import {
     tick,
 } from "@angular/core/testing";
 import { ProjectItemComponent } from "./project-item.component";
-import { signal } from "@angular/core";
 import { By } from "@angular/platform-browser";
 
 describe("ProjectItemComponent", () => {
